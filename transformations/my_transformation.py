@@ -84,7 +84,7 @@ def customers_silver_git():
     comment="Cleaned retail transactions - Git Version"
 )
 @dlt.expect_or_drop("valid_order_id", "order_id IS NOT NULL")
-# FIX: Check 'quantity_int' because 'quantity' was dropped in the select()
+# FIX: Check 'quantity_int' because 'quantity' was dropped in the select() below
 @dlt.expect_or_drop("valid_quantity", "quantity_int > 0") 
 def retail_silver_git():
     df = dlt.read("retail_bronze_git")
